@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+import doorbell_alert as alert
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(2,GPIO.IN)
@@ -11,7 +12,8 @@ while True:
         input = GPIO.input(2)
         #if the last reading was low and this one high, print
         if ((not prev_input) and input):
-                print (time.strftime("%d/%m/%Y %H:%M:%S")) + " Doorbell!"
+		alert.alert()
+		
         #update previous input
         prev_input = input
         #slight pause to debounce
