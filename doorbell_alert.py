@@ -1,13 +1,12 @@
 import doorbell_pushover as pushover
 import time
-import pyglet
+import os
 
 def alert():
 	# Output to Local Screen
 	print (time.strftime("%d/%m/%Y %H:%M:%S")) + " Doorbell!"
 	# Play a sound through the speaker
-	bell = pyglet.media.load('bell.wav', streaming=False)
-	bell.play()
+	os.system('mpg123 -q bell.mp3 &')
 	# Send notification through pushover
 	pushover.send("Doorbell"
 	,"Doorbell rang at: " + (time.strftime("%d/%m/%Y %H:%M:%S")),
