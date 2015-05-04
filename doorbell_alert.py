@@ -2,13 +2,15 @@ import doorbell_pushover as pushover
 import time
 import os
 
-def alert():
+def alert(cfg):
 	# Output to Local Screen
-	print (time.strftime("%d/%m/%Y %H:%M:%S")) + " Doorbell!"
+	print (time.strftime("%d/%m/%Y %H:%M:%S")) + " " + cfg["message"]
 	# Play a sound through the speaker
-	os.system('mpg123 -q /home/pi/doorbell/bell.mp3 &')
+	os.system("mpg123 -q " + cfg["mp3"] + " &")
 	# Send notification through pushover
-	pushover.send("Doorbell"
-	,"Doorbell rang at: " + (time.strftime("%d/%m/%Y %H:%M:%S")),
-	"http://2seven.co.uk/doorbell")	
+	pushover.send(cfg["pushover_app_token"],
+	cfg["pushover_user_token"],
+	cfg["pushover_title"],
+	cfg["message"],
+	cfg["pushover_url"])	
 	return
