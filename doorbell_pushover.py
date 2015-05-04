@@ -1,8 +1,5 @@
 import httplib, urllib
 
-#application_token = "aUxbrwySTK3exBeGaxch6yM44i9AZn"
-#user_token = "utthRauFAC3h8Ri2voU35VKkvRcyeL"
-
 def send(app_token,user_token,title,message,url):
 	if (len(app_token)>0) and (len(user_token)>0):
 		print "Sending to pushover..."
