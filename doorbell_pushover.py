@@ -4,7 +4,7 @@ import httplib, urllib
 #user_token = "utthRauFAC3h8Ri2voU35VKkvRcyeL"
 
 def send(app_token,user_token,title,message,url):
-	if app_token!=u"" and user_token!=u"":
+	if (len(app_token)>0) and (len(user_token)>0):
 		print "Sending to pushover..."
 		# Start your connection with the Pushover API server
 		conn = httplib.HTTPSConnection("api.pushover.net:443")

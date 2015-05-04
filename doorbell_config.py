@@ -10,7 +10,6 @@ def write(config_file,config):
 def read(config_file):
 	# Build a default
 	config= {
-	"debug":True,
 	"message":"Ding Dong",
 	"mp3":"bell.mp3",
 	"gpio_pin":2,

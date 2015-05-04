@@ -18,7 +18,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(cfg["gpio_pin"],GPIO.IN)
 
 #initialise a previous input variable to 0 (assume button not pressed last)
-prev_input = 0
+prev_input = GPIO.input(cfg["gpio_pin"])
 while True:
         #take a reading
         input = GPIO.input(cfg["gpio_pin"])
