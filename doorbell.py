@@ -7,11 +7,10 @@ import doorbell_config as config
 import doorbell_alert as alert
 import sys
 
-debug=True
 config_file="config.json"
 cfg=config.read(config_file)
 
-if debug:
+if cfg["debug"]:
         alert.alert(cfg)
         sys.exit("Debug End")
 
