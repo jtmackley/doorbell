@@ -9,6 +9,7 @@ def write(config_file,config):
 
 def read(config_file):
 	# Check for config file
+	config={}
 	if os.path.isfile(config_file): 
 		# Open the file
 		print "Reading config..."
