@@ -8,9 +8,11 @@ def alert(cfg):
 	# Play a sound through the speaker
 	os.system("mpg123 -q " + cfg["mp3"] + " &")
 	# Send notification through pushover
-	pushover.send(cfg["pushover_app_token"],
-	cfg["pushover_user_token"],
-	cfg["pushover_title"],
-	cfg["message"],
-	cfg["pushover_url"])	
+	if cfg["pushover"]:
+		pushover.send(cfg["pushover_app_token"],
+		cfg["pushover_user_token"],
+		cfg["pushover_title"],
+		cfg["message"],
+		cfg["pushover_url"])	
+
 	return
