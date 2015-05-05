@@ -17,7 +17,7 @@ def save(cfg,img):
 	    cur.execute(sql)
 	    result = con.use_result()
 	        
-	except MySQLdb.Error, e:
+	except  db.Error as e:
 	  
 	    print "Error %d: %s" % (e.args[0], e.args[1])
 
