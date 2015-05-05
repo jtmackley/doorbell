@@ -8,8 +8,8 @@ except ImportError:
     ignore_camera=True
     
 def takepicture(cfg):
-
-# Build a filename from the timestamp
+	print "Taking picture..."
+	# Build a filename from the timestamp
 	d = datetime.datetime.now()
 	imgYear = "%04d" % (d.year)
 	imgMonth = "%02d" % (d.month)
