@@ -26,9 +26,9 @@ def takepicture(cfg):
 	if not ignore_camera:
 		try:
 			# Using the camera object
-			camera = picamera.PiCamera()
-			# Capture a pic
-			camera.capture(filepath + filename)
+			with picamera.PiCamera() as cameera:
+				# Capture a pic
+				camera.capture(filepath + filename)
 		except:
 			print "There was a problem grabbing the image."
 			filename=""
