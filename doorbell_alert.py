@@ -1,4 +1,5 @@
 import doorbell_pushover as pushover
+import doorbell_mysql as db 
 import time
 import os
 
@@ -24,6 +25,6 @@ def alert(cfg):
 			ftp.upload(cfg,img)
 	# Log to mysql
 	if cfg["log_to_mysql"]:
-		mysql.save(cfg,img)
+		db.save(cfg,img)
 
 	return
