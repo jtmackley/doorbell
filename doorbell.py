@@ -26,12 +26,14 @@ else:
 
     #initialise a previous input variable to 0 (assume button not pressed last)
     prev_input = GPIO.input(cfg["gpio_pin"])
+    print "Waiting..."
     while True:
             #take a reading
             input = GPIO.input(cfg["gpio_pin"])
             #if the last reading was low and this one high, print
             if ((not prev_input) and input):
                 alert.alert(cfg)
+                print "Waiting..."
     		
             #update previous input
             prev_input = input
