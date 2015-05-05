@@ -1,5 +1,7 @@
 import doorbell_pushover as pushover
 import doorbell_mysql as db 
+import doorbell_camera as camera
+import doorbell_ftp as ftp
 import time
 import os
 
@@ -19,7 +21,8 @@ def alert(cfg):
 	# Take a picture
 	img=""
 	if cfg["camera"]:
-		img=takepicture(cfg)
+		img=camera.takepicture(cfg)
+		print "Image: " + img
 		# Upload to ftp
 		if cfg["ftp_upload"]:
 			ftp.upload(cfg,img)

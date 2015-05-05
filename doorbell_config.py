@@ -5,7 +5,7 @@ def write(config_file,config):
 	# Write our config
 	print "Writing config..."
 	with open(config_file, 'w') as f:
-		json.dump(config, f, sort_keys=True, indent=4, separators=(',', ': '))
+		json.dump(config, f, indent=4, separators=(',', ': '))
 
 def read(config_file):
 	# Check for config file
@@ -26,8 +26,13 @@ def check(config_file,config):
 	"localsound":1,
 	"mp3":"bell.mp3",
 	"gpio_pin":2,
-	"camera":0,
+	"camera":1,
+	"local_file_path":"/tmp",
 	"ftp_upload":0,
+	"ftp_server":"",
+	"ftp_user":"",
+	"ftp_password":"",
+	"ftp_remote_path":"doorbell",
 	"log_to_mysql":0,
 	"mysql_server":"",
 	"mysql_user":"",
