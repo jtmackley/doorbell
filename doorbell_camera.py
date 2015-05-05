@@ -24,10 +24,14 @@ def takepicture(cfg):
 		# Add / if missing
 		filepath=cfg["local_file_path"] + "/"
 	if not ignore_camera:
-		# Using the camera object
-		camera = picamera.PiCamera()
-		# Capture a pic
-		camera.capture(filepath + filename)
+		try:
+			# Using the camera object
+			with picamera.PiCamera() as cameera:
+				# Capture a pic
+				camera.capture(filepath + filename)
+		except:
+			print "There was a problem grabbing the image."
+			filename=""
 	else:
 		os.system("touch " + filepath + filename + " &")
 	# return the filename
