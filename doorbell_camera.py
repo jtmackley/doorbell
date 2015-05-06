@@ -19,20 +19,16 @@ def takepicture(cfg):
 	imgSecs = "%02d" % (d.second)
 	filename = "doorbell_" +str(imgYear) + str(imgMonth) + str(imgDate) + str(imgHour) + str(imgMins)  + str(imgSecs) + ".jpg"
 	# test the last char of path 
-	filepath=cfg["local_file_path"]
-	if filepath[-1]!="/":
-		# Add / if missing
-		filepath=cfg["local_file_path"] + "/"
 	if not ignore_camera:
 		try:
 			# Using the camera object
 			with picamera.PiCamera() as cameera:
 				# Capture a pic
-				camera.capture(filepath + filename)
+				camera.capture(cfg["camera_local_file_path"] + filename)
 		except:
 			print "There was a problem grabbing the image."
 			filename=""
 	else:
-		os.system("touch " + filepath + filename + " &")
+		os.system("touch " + cfg["camera_local_file_path"] + filename + " &")
 	# return the filename
 	return filename

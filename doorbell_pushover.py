@@ -1,6 +1,6 @@
 import httplib, urllib
 
-def send(app_token,user_token,title,message,url):
+def send():
 	if (len(app_token)>0) and (len(user_token)>0):
 		print "Sending to pushover..."
 		# Start your connection with the Pushover API server
@@ -8,10 +8,10 @@ def send(app_token,user_token,title,message,url):
 		# Send a POST request in urlencoded json
 		conn.request("POST", "/1/messages.json",
 		urllib.urlencode({
-		"token": app_token,
-		"user": user_token,
-		"title": title,
-		"message": message,
+		"token": cfg["pushover_app_token"],
+		"user": cfg["pushover_user_token"],
+		"title": cfg["pushover_title"],
+		"message": cfg["app.message"],
 		"url": url,
 		}), { "Content-type": "application/x-www-form-urlencoded" })
 
