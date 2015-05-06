@@ -25,7 +25,7 @@ def takepicture(cfg):
 			#with picamera.PiCamera() as cameera:
 			#	# Capture a pic
 			#	camera.capture(cfg["camera_local_file_path"] + filename)
-			os.system("raspistill -n -w 640 -h 320 -o " + cfg["camera_local_file_path"] + filename + " &")
+			os.system("raspistill -n -w 640 -h 320 -o " + cfg["camera_local_file_path"] + filename)
 		except:
 			print "There was a problem grabbing the image."
 			filename=""
