@@ -51,7 +51,6 @@ def check(config_file,config):
 	"email":0,
 	"email_to":"",
 	"email_subject":"",
-	"email_output":0,
 	"email_account_user":"",
 	"email_account_password":"",
 	"email_server":"",
