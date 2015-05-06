@@ -1,11 +1,11 @@
 import datetime
 import os
 ignore_camera=False
-try:
-    import picamera
-except ImportError:
-    print "Requires python-picamera"
-    ignore_camera=True
+#try:
+#    import picamera
+#except ImportError:
+#    print "Requires python-picamera"
+#    ignore_camera=True
     
 def takepicture(cfg):
 	print "Taking picture..."
@@ -22,9 +22,10 @@ def takepicture(cfg):
 	if not ignore_camera:
 		try:
 			# Using the camera object
-			with picamera.PiCamera() as cameera:
-				# Capture a pic
-				camera.capture(cfg["camera_local_file_path"] + filename)
+			#with picamera.PiCamera() as cameera:
+			#	# Capture a pic
+			#	camera.capture(cfg["camera_local_file_path"] + filename)
+			os.system("raspistill -n -w 640 -h 320 -o " + cfg["camera_local_file_path"] + filename + " &")
 		except:
 			print "There was a problem grabbing the image."
 			filename=""
