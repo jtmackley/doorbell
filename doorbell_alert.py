@@ -10,7 +10,7 @@ def alert(cfg):
 	# Send notification through pushover
 	if cfg["pushover"]:
 		import doorbell_pushover as pushover
-		pushover.send()	
+		pushover.send(cfg)	
 	# Take a picture
 	img=""
 	if cfg["camera"]:
