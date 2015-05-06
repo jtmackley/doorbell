@@ -1,7 +1,7 @@
 import httplib, urllib
 
 def send():
-	if (len(app_token)>0) and (len(user_token)>0):
+	if (len(cfg["pushover_app_token"])>0) and (len(cfg["pushover_user_token"])>0):
 		print "Sending to pushover..."
 		# Start your connection with the Pushover API server
 		conn = httplib.HTTPSConnection("api.pushover.net:443")
