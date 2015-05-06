@@ -14,7 +14,7 @@ config_file="config.json"
 cfg=config.read(config_file)
 
 
-if cfg["debug"]:
+if cfg["app_debug"]:
     print "Entering Debug Mode..."
     alert.alert(cfg)
 
