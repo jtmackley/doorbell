@@ -22,7 +22,7 @@ if ignore_gpio:
     print "Quitting..."
 else:
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(cfg["gpio_pin"],GPIO.IN)
+    GPIO.setup(cfg["gpio_pin"],GPIO.IN,pull_up_down=GPIO.PUD_UP)
 
     #initialise a previous input variable to 0 (assume button not pressed last)
     prev_input = GPIO.input(cfg["gpio_pin"])
