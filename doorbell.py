@@ -12,31 +12,33 @@ import doorbell_alert as alert
 
 config_file="config.json"
 cfg=config.read(config_file)
+GPIO_BUTTON=cfg["gpio_button_pin"]
+GPIO_SENSOR=cfg["gpio_sensor_pin"]
+def ButtonPressed(GPIO_BUTTON):
+    alert.alert(cfg,action=1)
 
+def SensorDetected(GPIO_SENSOR):
+    alert.alert(cfg,action=2)
 
 if cfg["app_debug"]:
     print "Entering Debug Mode..."
-    alert.alert(cfg)
+    alert.alert(cfg,cfg["app_debug"])
 
 if ignore_gpio:
     print "Quitting..."
 else:
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(cfg["gpio_pin"],GPIO.IN,pull_up_down=GPIO.PUD_UP)
+    GPIO.setup(cfg["gpio_button_pin"],GPIO.IN,pull_up_down=GPIO.PUD_UP)
+    GPIO.setup(cfg["gpio_sensor_pin"],GPIO.IN)
 
     #initialise a previous input variable to 0 (assume button not pressed last)
-    prev_input = GPIO.input(cfg["gpio_pin"])
     print "Waiting..."
-    while True:
-            #take a reading
-            input = GPIO.input(cfg["gpio_pin"])
-            #if the last reading was low and this one high, print
-            if ((not prev_input) and input):
-                alert.alert(cfg)
-                print "Waiting..."
-    		
-            #update previous input
-            prev_input = input
-            #slight pause to debounce
-            time.sleep(0.05)
+    try:
+        GPIO.add_event_detect(cfg["gpio_button_pin"], GPIO.RISING, callback=ButtonPressed)
+        GPIO.add_event_detect(cfg["gpio_sensor_pin"], GPIO.RISING, callback=SensorDetect)
+        while 1:
+                time.sleep(100)
+    except KeyboardInterrupt:
+        print "Quit"
+        GPIO.cleanup()
 
