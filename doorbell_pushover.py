@@ -1,6 +1,6 @@
 import httplib, urllib
 
-def send(cfg):
+def send(cfg,action):
 	if (len(cfg["pushover_app_token"])>0) and (len(cfg["pushover_user_token"])>0):
 		print "Sending to pushover..."
 		# Start your connection with the Pushover API server
@@ -10,7 +10,7 @@ def send(cfg):
 		urllib.urlencode({
 		"token": cfg["pushover_app_token"],
 		"user": cfg["pushover_user_token"],
-		"title": cfg["pushover_title"],
+		"title": cfg["pushover_title"] + " " + ("Button" if action==1 else "Sensor"),
 		"message": cfg["app_message"],
 		"url": cfg["pushover_url"],
 		}), { "Content-type": "application/x-www-form-urlencoded" })
