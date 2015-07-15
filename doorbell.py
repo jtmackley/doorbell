@@ -17,7 +17,7 @@ GPIO_SENSOR=cfg["gpio_sensor_pin"]
 def ButtonPressed(GPIO_BUTTON):
     alert.alert(cfg,action=1)
 
-def SensorDetected(GPIO_SENSOR):
+def SensorDetect(GPIO_SENSOR):
     alert.alert(cfg,action=2)
 
 if cfg["app_debug"]:
