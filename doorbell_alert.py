@@ -30,4 +30,9 @@ def alert(cfg,action):
 		import doorbell_email as email 
 		email.mail(cfg,img)
 
+	# Delet any temp image
+	try:
+		os.remove(cfg["camera_local_file_path"] + img)
+	except OSError:
+		pass
 	return
