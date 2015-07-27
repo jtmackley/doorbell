@@ -35,4 +35,7 @@ def alert(cfg,action):
 		os.remove(cfg["camera_local_file_path"] + img)
 	except OSError:
 		pass
+
+    print "Waiting..."
+		
 	return
