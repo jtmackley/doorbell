@@ -36,6 +36,6 @@ def alert(cfg,action):
 	except OSError:
 		pass
 
-    print "Waiting..."
+	print "Waiting..."
 		
 	return
