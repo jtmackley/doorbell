@@ -57,6 +57,7 @@ def check(config_file,config):
 	"email_server":"",
 	"email_port":587,
 	"email_tls":1,
+	"alert_timeout":60
 	}
 
 	writenew=False

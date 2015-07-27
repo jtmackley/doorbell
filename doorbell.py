@@ -14,15 +14,33 @@ config_file="config.json"
 cfg=config.read(config_file)
 GPIO_BUTTON=cfg["gpio_button_pin"]
 GPIO_SENSOR=cfg["gpio_sensor_pin"]
+timer=[]
+timer.append(time.time())
+timer.append(time.time())
+
 def ButtonPressed(GPIO_BUTTON):
-    alert.alert(cfg,action=1)
+    if time.time()>timer[0]:
+        alert.alert(cfg,action=1)
+        timer[0]=time.time() + cfg["alert_timeout"]
+    else:
+        print "Ignoring event"
 
 def SensorDetect(GPIO_SENSOR):
-    alert.alert(cfg,action=2)
+    if time.time()>timer[1]:
+        alert.alert(cfg,action=2)
+        timer[1]=time.time() + cfg["alert_timeout"]
+    else:
+        print "Ignoring event"
 
 if cfg["app_debug"]:
     print "Entering Debug Mode..."
-    alert.alert(cfg,cfg["app_debug"])
+    SensorDetect(GPIO_SENSOR)
+    SensorDetect(GPIO_SENSOR)
+    time.sleep(30)
+    SensorDetect(GPIO_SENSOR)
+    time.sleep(30)
+    SensorDetect(GPIO_SENSOR)
+
 
 if ignore_gpio:
     print "Quitting..."
