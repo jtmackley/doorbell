@@ -44,6 +44,8 @@ def check(config_file,config):
 	"mysql_password":"",
 	"mysql_database":"",
 	"mysql_doorbell_id":"1",
+	"pushbullet":0,
+	"pushbullet_app_token":"",
 	"pushover":0,
 	"pushover_title":"Doorbell",
 	"pushover_user_token":"",
