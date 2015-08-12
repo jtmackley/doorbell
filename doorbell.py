@@ -17,20 +17,29 @@ GPIO_SENSOR=cfg["gpio_sensor_pin"]
 timer=[]
 timer.append(time.time())
 timer.append(time.time())
+processing=[]
+processing.append(0)
+processing.append(0)
 
 def ButtonPressed(GPIO_BUTTON):
-    if time.time()>timer[0]:
-        alert.alert(cfg,action=1)
-        timer[0]=time.time() + cfg["alert_timeout"]
-    else:
-        print "Ignoring event"
+    if not processing[0]:
+        processing[0]=1
+        if time.time()>timer[0]:
+            timer[0]=time.time() + cfg["alert_timeout"]
+            alert.alert(cfg,action=1)
+        else:
+            print "Ignoring event"
+        processing[0]=0
 
 def SensorDetect(GPIO_SENSOR):
-    if time.time()>timer[1]:
-        alert.alert(cfg,action=2)
-        timer[1]=time.time() + cfg["alert_timeout"]
-    else:
-        print "Ignoring event"
+    if not processing[1]:
+        processing[1]=1
+        if time.time()>timer[1]:
+            timer[1]=time.time() + cfg["alert_timeout"]
+            alert.alert(cfg,action=2)
+        else:
+            print "Ignoring event"
+        processing[1]=0
 
 if cfg["app_debug"]:
     print "Entering Debug Mode..."
