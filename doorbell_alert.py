@@ -11,6 +11,9 @@ def alert(cfg,action):
 	if (cfg["pushover"] & action):
 		import doorbell_pushover as pushover
 		pushover.send(cfg,action)	
+	if (cfg["pushbullet"] & action):
+		import doorbell_pushbullet as pbullet
+		pbullet.send(cfg,action)	
 	# Take a picture
 	img=""
 	if (cfg["camera"] & action):

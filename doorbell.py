@@ -22,7 +22,7 @@ processing.append(0)
 processing.append(0)
 
 def ButtonPressed(GPIO_BUTTON):
-    if not processing[0]:
+    if processing[0]==0:
         processing[0]=1
         if time.time()>timer[0]:
             timer[0]=time.time() + cfg["alert_timeout"]
@@ -32,7 +32,7 @@ def ButtonPressed(GPIO_BUTTON):
         processing[0]=0
 
 def SensorDetect(GPIO_SENSOR):
-    if not processing[1]:
+    if processing[1]==0:
         processing[1]=1
         if time.time()>timer[1]:
             timer[1]=time.time() + cfg["alert_timeout"]
