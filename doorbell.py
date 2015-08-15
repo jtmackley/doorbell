@@ -61,8 +61,8 @@ else:
     #initialise a previous input variable to 0 (assume button not pressed last)
     print "Waiting..."
     try:
-        GPIO.add_event_detect(cfg["gpio_button_pin"], GPIO.RISING, callback=ButtonPressed)
-        GPIO.add_event_detect(cfg["gpio_sensor_pin"], GPIO.RISING, callback=SensorDetect)
+        GPIO.add_event_detect(cfg["gpio_button_pin"], GPIO.RISING, callback=ButtonPressed, bouncetime=2000)
+        GPIO.add_event_detect(cfg["gpio_sensor_pin"], GPIO.RISING, callback=SensorDetect, bouncetime=2000)
         while 1:
                 time.sleep(100)
     except KeyboardInterrupt:
