@@ -16,7 +16,7 @@ def takepicture(cfg):
 	# test the last char of path 
 	if not ignore_camera:
 		try:
-			os.system("raspistill -n -w 640 -h 320 -o " + cfg["camera_local_file_path"] + filename)
+			os.system("raspistill -t 0 -n -w 640 -h 320 -o " + cfg["camera_local_file_path"] + filename)
 		except:
 			print "There was a problem grabbing the image."
 			filename=""
