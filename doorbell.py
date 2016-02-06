@@ -17,9 +17,9 @@ cfg=config.read(config_file)
 SECONDS2MICRO = 1000000  # Constant for converting Shutter Speed in Seconds to Microseconds
 
 verbose = True     # Display showMessage if True
-threshold = 10     # How Much a pixel has to change
-sensitivity = 200  # How Many pixels need to change for motion detection
-nightShut = 5.5    # seconds Night shutter Exposure Time default = 5.5  Do not exceed 6 since camera may lock up
+threshold = cfg["threshold"]     # How Much a pixel has to change 20
+sensitivity = cfg["sensitivity"]  # How Many pixels need to change for motion detection 400
+nightShut = cfg["nightShut"]    # seconds Night shutter Exposure Time default = 5.5  Do not exceed 6 since camera may lock up
 nightISO = 800
 
 testWidth = 100
